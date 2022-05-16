@@ -1,0 +1,41 @@
+.header {
+  margin: 0 auto;
+  color: tomato;
+  text-align: center;
+  border-radius: 2px;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 40px;
+}
+.header-h1{
+  font-weight: bold;
+  color: tomato !important;
+}
+.active{
+  color: tomato !important;
+  text-decoration: none;
+  background-color: unset !important;
+}
+.nav-link{
+  color: #131313;
+  text-decoration: none;
+  background-color: unset !important;
+}
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 20px;
+  
+}
+nav > a{
+  display: flex;
+  text-decoration: none;
+  color: #131313;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 40px;
+}
