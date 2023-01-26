@@ -1,17 +1,25 @@
+.stories {
+  display: contents;
+  height: calc(100vh - 80px);
+  margin: 0;
+  font-size: 1rem;
+}
 .listContainer {
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  align-items: flex-start;
+    justify-content: flex-start;
+    min-width: 500px;
+    min-height: 40px;
   top: 30px;
-  border: 1px solid #ccc;
+  border-bottom: 0.1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
+  padding: 1px;
+    margin: 1px;
 }
 
 a:link,
 a:visited {
-  font-size: 18px;
   color: #131313;
   text-decoration: none;
 }
@@ -20,22 +28,37 @@ a:hover,
 a:active {
   text-decoration: none;
 }
+h4 {
+  margin-top: 50px;
+}
 
+.list-link {
+  text-align: left;
+  margin-bottom: 5px;
+}
 .list-title {
+  display: flex;
   margin-bottom: 4px;
 }
 
+.list-info,
 span {
-  margin: 4px;
+  text-align: left;
+    font-size: 90%;
+    color: gray;
+    margin: 2px;
 }
 
-.list-info {
-  color: #b55a44;
-}
-.search-story{
-  width: 100%;
+.search-story {
+  max-width: 1500px;
   height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+.center-util {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

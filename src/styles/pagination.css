@@ -1,0 +1,11 @@
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin: 5px;
+}
+
+label {
+  margin-left: 10px;
+  font-weight: 700;
+}

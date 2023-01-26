@@ -1,0 +1,44 @@
+.comments-container {
+  position: relative;
+  height: calc(100vh - 80px);
+  width: 40vw;
+
+}
+
+.center-util {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.author {
+  font-weight: 700;
+  color: tomato;
+}
+
+.parent {
+  margin: 8px;
+}
+
+.children {
+  padding-left: 30px;
+  margin-top: 10px;
+
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+
+}
+
+.grand-children-author {
+  font-weight: 700;
+  color: tomato;
+
+}
+
+.grand-children-text {
+  margin: 0;
+  padding: 0;
+}

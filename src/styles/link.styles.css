@@ -1,6 +1,8 @@
 .link{
-  text-align: flex-start;
+  margin-bottom: 5px;
   display: flex;
   justify-content: flex-start;
+  text-align: left;
   align-items: flex-start;
+  font-size: small;
 }

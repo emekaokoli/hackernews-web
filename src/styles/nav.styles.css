@@ -1,41 +1,107 @@
-.header {
-  margin: 0 auto;
-  color: tomato;
+nav {
+  top: 0;
+  position: relative;
+  color: white;
+  background-color: tomato;
   text-align: center;
-  border-radius: 2px;
+  border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
-  height: 40px;
+  display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 80px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+  }
+  
+  nav>a {
+    display: flex;
+    text-decoration: none;
+    color: #131313;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 40px;
+  }
+  
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px !important;
+  
+  }
+  
+  ul,
+  li {
+    list-style: none;
+  }
+  
+  .search-container {
+    width: auto;
 }
-.header-h1{
+.header-logo {
+  position: absolute;
+  left: 0;
   font-weight: bold;
+  font-size: 1.5rem;
   color: tomato !important;
+  margin: -37px 0 11px 10px;
 }
-.active{
-  color: tomato !important;
+.header-logo>a {
+  color: #000 !important;
+}
+
+.active {
+  color: white !important;
   text-decoration: none;
   background-color: unset !important;
 }
-.nav-link{
+.nav-link {
   color: #131313;
   text-decoration: none;
   background-color: unset !important;
+  margin: 5px !important;
 }
-nav{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.search-bar-input {
+  width: 25%;
+  height: 25%;
+  margin: 2px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.search-bar-input:focus {
+  -webkit-box-shadow: unset !important;
+  -moz-box-shadow: unset !important;
+  box-shadow: unset !important;
+  outline: unset !important;
+  border: unset !important;
+  border-radius: unset !important;
+  -webkit-border-radius: unset !important;
+  -moz-border-radius: unset !important;
+  -ms-border-radius: unset !important;
+  -o-border-radius: unset !important;
+}
+
+.search-bar-input input[type="search"] {
   width: 100%;
   height: 100%;
-  margin: 20px;
-  
-}
-nav > a{
-  display: flex;
-  text-decoration: none;
-  color: #131313;
+  border: none;
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 10px;
-  margin-bottom: 40px;
+  padding: 0 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }

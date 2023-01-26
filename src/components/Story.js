@@ -1,87 +1,112 @@
-import { useEffect, useState } from 'react';
-import { FormControl } from 'react-bootstrap';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-import { useFetch } from '../Hooks/useFetch.hooks';
+import { useFetchStories } from '../Hooks/useFetchStories';
+import '../styles/story.styles.css';
 import Loading from '../utils/Loading';
 import useDebounce from '../utils/useDebounce';
+import { DataContext } from './../context/store';
 import ListNews from './ListNews';
+import Pagination from './Pagination';
 
 const Story = () => {
   const { category } = useParams();
 
-  const { stories, loading, error } = useFetch(category ? category : 'top');
-  const [searchText, setSearchText] = useState('');
-  const debouncedSearch = useDebounce(searchText, 500);
-  const [filteredList, setFilteredList] = useState([...stories]);
+  const { searchText } = useContext(DataContext);
 
+  const [page, setPage] = useState(1);
+  const [limit] = useState(10);
+  const { stories, loading, error } = useFetchStories(
+    category || 'top',
+    page,
+    limit
+  );
+
+  const { pages, nextPage, prevPage, totalRecord, data } = stories;
+
+  const debouncedSearch = useDebounce(searchText, 500);
+  const [filteredList, setFilteredList] = useState(data);
 
   useEffect(() => {
     if (debouncedSearch) {
-      const filtered = stories.filter(({ title }) =>
+      const filtered = data?.filter(({ title }) =>
         title.toLowerCase().includes(debouncedSearch.toLowerCase())
       );
+
       setFilteredList([...filtered]);
     } else {
-      setFilteredList([...stories]);
+      setFilteredList(data);
     }
-  }, [debouncedSearch, stories]);
+  }, [debouncedSearch, data]);
 
   if (loading) {
-    return <Loading />;
-  }
-  if (error) {
     return (
-      <div className="d-flex justify-content-center align-items-center">
-        {error}
+      <div className="center-util">
+        <Loading />
       </div>
     );
   }
+  if (error) {
+    return <div className="center-util">{error}</div>;
+  }
+
   return (
-    <>
-      <div className="search-story">
-        <FormControl
-          type="search"
-          name={searchText}
-          placeholder="Search news"
-          className="m-2 w-25"
-          aria-label="Search box"
-          value={searchText}
-          onChange={e => setSearchText(e.target.value)}
-        />
-      </div>
-      {filteredList.map(
-        ({
-          id,
-          _id,
-          type,
-          by,
-          timeString,
-          dead,
-          kids,
-          descendants,
-          score,
-          title,
-          url,
-        }) => (
-          <ListNews
-            key={_id}
-            _id={_id}
-            id={id}
-            type={type}
-            by={by}
-            time={timeString}
-            dead={dead}
-            kids={kids}
-            descendants={descendants}
-            score={score}
-            title={title}
-            url={url}
-            timeString={timeString}
-          />
-        )
-      )}
-    </>
+    <section className="stories">
+      <h4>Total count: {totalRecord}</h4>
+      {filteredList
+        ?.map(items => (
+          <Fragment key={items._id}>
+            <ListNews
+              key={items._id}
+              id={items._id}
+              type={items.type}
+              by={items.by}
+              time={items.time}
+              kids={items?.kids}
+              score={items.score}
+              title={items.title}
+              url={items.url}
+            />
+          </Fragment>
+        ))
+        .sort((a, b) =>
+          new Date(a.props.children.props.time * 1000)
+            .toLocaleDateString('en-NG', {
+              hour: 'numeric',
+              minute: 'numeric',
+              hour12: true,
+              timeZone: 'Africa/Lagos',
+              second: 'numeric',
+              day: 'numeric',
+              month: 'numeric',
+              year: 'numeric',
+            })
+
+            .localeCompare(
+              new Date(b.props.children.props.time * 1000).toLocaleDateString(
+                'en-NG',
+                {
+                  hour: 'numeric',
+                  minute: 'numeric',
+                  hour12: true,
+                  timeZone: 'Africa/Lagos',
+                  second: 'numeric',
+                  day: 'numeric',
+                  month: 'numeric',
+                  year: 'numeric',
+                }
+              )
+            )
+        )}
+      <Pagination
+        limit={limit}
+        page={page}
+        setPage={setPage}
+        totalRecord={totalRecord}
+        pages={pages}
+        nextPage={nextPage}
+        prevPage={prevPage}
+      />
+    </section>
   );
 };
 
