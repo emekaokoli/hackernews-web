@@ -23,6 +23,7 @@ src
  ┃ ┣ ErrorComponent.jsx
  ┃ ┗ ErrorFallback.jsx
  ┣ Hooks
+ ┃ ┣ useDebounce.js
  ┃ ┣ useFetchNestedItems.js
  ┃ ┗ useFetchStories.js
  ┣ routes
@@ -38,8 +39,7 @@ src
  ┃ ┗ story.styles.css
  ┣ utils
  ┃ ┣ Link.js
- ┃ ┣ Loading.js
- ┃ ┗ useDebounce.js
+ ┃ ┗ Loading.js
  ┣ App.js
  ┣ index.js
  ┣ reportWebVitals.js

@@ -65,7 +65,7 @@ input,
 button,
 textarea,
 select {
-  color: inherit;
+  color: #000;
   letter-spacing: inherit;
 }
 
